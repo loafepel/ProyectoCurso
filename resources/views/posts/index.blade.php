@@ -28,11 +28,11 @@
                        <div class="mb-3">
                         <label for="title" class="form-label">Titulo</label>
                         <input type="text" name="title" class="form-control" value="{{old('title')}}">
-                        <div class="form-text">Ingresar titulo</div>
+                        <div class="form-text">Ingresar titulo del post</div>
 
                         <label for="body" class="form-label">Body</label>
                         <input type="text" name="body" class="form-control" value="{{old('body')}}">
-                        <div class="form-text">Ingresar body</div>
+                        <div class="form-text">Ingresar body del post</div>
 
                         <!--<label for="user_id" class="form-label">Id Usuario</label>
                         <input type="text" name="user_id" class="form-control" value="{{old('user_id')}}">
