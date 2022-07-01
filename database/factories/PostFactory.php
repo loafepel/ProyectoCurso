@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 class PostFactory extends Factory
 {
     protected $model = Post::class;
-
+    //se define un usuario para evitar que la tabla este vacia 
     public function definition()
     {
         return [

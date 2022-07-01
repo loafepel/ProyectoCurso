@@ -16,6 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        //para mostrar todos los datos 
         $posts=Post::get();
         return view('posts.index', compact('posts'));//['post' => $posts]);
 
@@ -35,6 +36,7 @@ class PostController extends Controller
             'body'=> 'vbbv',
             'user_id' => auth()->user()->id
         ]);*/
+        //valida los datos de entrada, dandoles condiciones
         $request->validate([
             'title'=>'required',
             'body' => 'required',
@@ -43,7 +45,7 @@ class PostController extends Controller
         ]);
 
         //dd($request);
-        
+        //almacena los datos solicitados
        $post=new Post;
         $post->title=$request->title;
         $post->body=$request->body;
@@ -82,6 +84,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
+     //modificar los datos de la tabla
     public function update(Request $request, $post)
     {
         $post = Post::find($post);

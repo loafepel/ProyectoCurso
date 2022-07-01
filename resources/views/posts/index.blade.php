@@ -8,11 +8,11 @@
                 <div class="card-header">
                     Articulos
                     
-
+                    <!-- Reenvia la informacino a la funcion store-->
                     <form action="{{ route('posts.store')}}" method="POST">
 
                         @csrf
-              
+                        
                         @if(session('success'))
                         <h6 class="alert alert-su"> {{session('success')}} </h6>
                         @endif
@@ -24,7 +24,7 @@
                            @endforeach
                        </div>
                        @endif
-              
+                       <!--agrega los espacios donde se introduciran los datos -->
                        <div class="mb-3">
                         <label for="title" class="form-label">Titulo</label>
                         <input type="text" name="title" class="form-control" value="{{old('title')}}">
@@ -44,7 +44,7 @@
                   </form>
                     
                     
-                   <!-- <a href="{{route('posts.store')}}" class="btn btn-sm btn-primary">Crear</a>-->
+                   
                 </div>
 
                 <div class="card-body">
