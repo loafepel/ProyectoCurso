@@ -7,19 +7,44 @@
             <div class="card">
                 <div class="card-header">
                     Articulos
+                    
 
-                    <div class="mb-3">
+                    <form action="{{ route('posts.store')}}" method="POST">
+
+                        @csrf
+              
+                        @if(session('success'))
+                        <h6 class="alert alert-su"> {{session('success')}} </h6>
+                        @endif
+              
+                       @if($errors->any())
+                       <div class="alert alert-danger">
+                           @foreach($errors->all() as $error)
+                           - {{ $error }} <br>
+                           @endforeach
+                       </div>
+                       @endif
+              
+                       <div class="mb-3">
                         <label for="title" class="form-label">Titulo</label>
                         <input type="text" name="title" class="form-control" value="{{old('title')}}">
                         <div class="form-text">Ingresar titulo</div>
 
                         <label for="body" class="form-label">Body</label>
                         <input type="text" name="body" class="form-control" value="{{old('body')}}">
-
                         <div class="form-text">Ingresar body</div>
-                    </div>
-                    <a href="{{route('posts.store')}}" class="btn btn-sm btn-primary">Crear</a>
 
+                        <label for="user_id" class="form-label">Id Usuario</label>
+                        <input type="text" name="user_id" class="form-control" value="{{old('user_id')}}">
+                        <div class="form-text">Ingresa el Id del Usuario</div>
+
+                        <button type="submit" class="btn btn-primary">Crear </button>
+                    </div>
+                    
+                  </form>
+                    
+                    
+                   <!-- <a href="{{route('posts.store')}}" class="btn btn-sm btn-primary">Crear</a>-->
                 </div>
 
                 <div class="card-body">
@@ -50,10 +75,10 @@
                                     
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-danger btn-sm">Eliminar</button>
-                                    <!--<input type="submit"
+                                    <!--<button class="btn btn-danger btn-sm">eliminar</button>-->
+                                    <input type="submit"
                                     value="Eliminar" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('¿Desea eliminar...?')">-->
+                                    onclick="return confirm('¿Desea eliminar...?')">
                                     </form>
                                 </td>
                             </tr>

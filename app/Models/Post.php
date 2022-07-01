@@ -29,4 +29,8 @@ class Post extends Model
     {
         return substr($this->body, 0, 140);
     }
+
+    protected $fillable = [
+        'title', 'body', 'user_id',
+    ];
 }

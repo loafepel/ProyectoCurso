@@ -29,4 +29,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [PageController::class, 'posts']);
 Route::get ('blog/{post}', [App\Http\Controllers\PageController::class, 'post'])->name('post');
 
-Route::resource('posts', 'App\Http\Controllers\BackEnd\PostController')->middleware('auth')->except('show');
+Route::resource('posts', 'App\Http\Controllers\BackEnd\PostController')->middleware('auth');
