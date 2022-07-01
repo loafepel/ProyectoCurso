@@ -38,16 +38,16 @@ class PostController extends Controller
         $request->validate([
             'title'=>'required',
             'body' => 'required',
-            'user_id'=> 'required'
+            //'user_id'=> 'required'
 
         ]);
 
         //dd($request);
         
-        $post=new Post;
+       $post=new Post;
         $post->title=$request->title;
         $post->body=$request->body;
-        $post->user_id=$request->user_id;//->auth()->user()->id;
+        $post->user_id=auth()->user()->id;
         $post->save();
         return redirect()->route('posts.index')->with('success', 'Post Creado');
     }

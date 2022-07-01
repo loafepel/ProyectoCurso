@@ -34,9 +34,9 @@
                         <input type="text" name="body" class="form-control" value="{{old('body')}}">
                         <div class="form-text">Ingresar body</div>
 
-                        <label for="user_id" class="form-label">Id Usuario</label>
+                        <!--<label for="user_id" class="form-label">Id Usuario</label>
                         <input type="text" name="user_id" class="form-control" value="{{old('user_id')}}">
-                        <div class="form-text">Ingresa el Id del Usuario</div>
+                        <div class="form-text">Ingresa el Id del Usuario</div>-->
 
                         <button type="submit" class="btn btn-primary">Crear </button>
                     </div>
