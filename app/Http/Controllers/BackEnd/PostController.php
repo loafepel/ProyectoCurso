@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Laravel\Ui\AuthCommand;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -40,16 +41,23 @@ class PostController extends Controller
         $request->validate([
             'title'=>'required',
             'body' => 'required',
-            //'user_id'=> 'required'
 
         ]);
 
+       
+
         //dd($request);
         //almacena los datos solicitados
-       $post=new Post;
+        $post=new Post;
         $post->title=$request->title;
         $post->body=$request->body;
         $post->user_id=auth()->user()->id;
+
+        if ($request->file('file')){
+            $post->image=$request->file('file')->store('posts', 'public');
+            $post->save();
+        }
+
         $post->save();
         return redirect()->route('posts.index')->with('success', 'Post Creado');
     }
@@ -91,6 +99,11 @@ class PostController extends Controller
         $post = Post::find($post);
         $post->title= $request->title;
         $post->body=$request->body;
+        if ($request->file('file')){
+            Storage::disk('public')->delete($post->image);
+            $post->image=$request->file('file')->store('posts', 'public');
+            $post->save();
+        }
         $post->save();
         return redirect()->route('posts.index');
     }
@@ -104,6 +117,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post=Post::find($post);
+        
+        //Storage::disk('public')->delete($post->image);
+
         $post->each->delete();
         return redirect()->route('posts.index');
     }

@@ -9,6 +9,13 @@
            
             <div class="card">
                 <div class="card-body">
+                    @if ($post->image)
+                    <img src="{{$post->get_imagen}}" class="card-img-top">
+
+                    @elseif ($post->iframe)
+                    {{!! $post->iframe}}
+                        
+                    @endif
                     <h5 class="card-title">{{$post->title }}</h5>
                     <p class="card-text">
                         {{$post->get_excerpt}}

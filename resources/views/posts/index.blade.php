@@ -9,7 +9,9 @@
                     Articulos
                     
                     <!-- Reenvia la informacino a la funcion store-->
-                    <form action="{{ route('posts.store')}}" method="POST">
+                    <form action="{{ route('posts.store')}}" method="POST" enctype="multipart/form-data">
+
+                        
 
                         @csrf
                         
@@ -33,6 +35,10 @@
                         <label for="body" class="form-label">Body</label>
                         <input type="text" name="body" class="form-control" value="{{old('body')}}">
                         <div class="form-text">Ingresar body del post</div>
+
+                        <label for="file" class="form-label">Imagen</label>
+                        <input type="file" name="file" class="form-control">
+                        <div class="form-text">Ingresar Imagen</div>
 
                         <!--<label for="user_id" class="form-label">Id Usuario</label>
                         <input type="text" name="user_id" class="form-control" value="{{old('user_id')}}">

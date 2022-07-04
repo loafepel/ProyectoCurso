@@ -33,4 +33,10 @@ class Post extends Model
     protected $fillable = [
         'title', 'body', 'user_id',
     ];
+
+
+    public function getGetImagenAttribute(){
+        if($this->image)
+        return url("storage/$this->image");
+    }
 }
