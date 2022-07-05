@@ -8,7 +8,7 @@
                 <div class="card-body">
 
                     @if ($post->image)
-                    <img src="{{$post->get_imagen}}" class="card-img-top">
+                    <img src="{{$post->get_imagen}}" class="card-img-top"><!--get_imagen es para agarrar la imagen del storage, necesario configurar en el post-->
 
                     @elseif ($post->iframe)
                     <div class="embed-responsive embed-responsive-16by9"></div>

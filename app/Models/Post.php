@@ -34,7 +34,8 @@ class Post extends Model
         'title', 'body', 'user_id',
     ];
 
-
+    //para traer la imagen del storage, necesario ingresar el comando 
+    //php artisan storage:link para trar el storage privado al publico
     public function getGetImagenAttribute(){
         if($this->image)
         return url("storage/$this->image");
